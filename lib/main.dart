@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_cash_book_flutter/screens/create_screen.dart';
 import 'package:my_cash_book_flutter/screens/update_screen.dart';
 
+import 'db/database_instance.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -26,6 +28,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Inisialisasi Database
+  DatabaseInstance? databaseInstance;
+  @override
+  void initState() {
+    databaseInstance = DatabaseInstance();
+    initDatabase();
+    super.initState();
+  }
+
+  Future initDatabase() async {
+    await databaseInstance!.database();
+    setState(() {});
+  }
+  // End Inisialisasi Database
+
+  // Fungsi untuk menampilkan dialog hapus data
   showAlertDialog(BuildContext context) {
     Widget okButton = TextButton(
       child: Text("Yakin"),
@@ -46,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return alertDialog;
         });
   }
+  // End Dialog
 
   @override
   Widget build(BuildContext context) {
