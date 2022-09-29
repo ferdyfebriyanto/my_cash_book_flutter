@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseInstance {
-  final String databaseName = "kelola_duit.db";
+  final String databaseName = "my_cash_book.db";
   final int databaseVersion = 2;
 
   // Atribut di Model Transaksi
