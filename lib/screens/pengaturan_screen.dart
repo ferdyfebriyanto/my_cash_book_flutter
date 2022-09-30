@@ -20,32 +20,77 @@ class _PengaturanState extends State<Pengaturan> {
       appBar: AppBar(
         title: Text('Pengaturan'),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                child: const Text(
-                  'Ganti Password',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  child: const Text(
+                    'Ganti Password',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              TextField(
-                controller: passwordLamaController,
-                decoration: const InputDecoration(
-                  labelText: 'Password Lama',
+                TextField(
+                  controller: passwordLamaController,
+                  decoration: const InputDecoration(
+                    labelText: 'Password Lama',
+                  ),
                 ),
-              ),
-              TextField(
-                controller: passwordBaruController,
-                decoration: const InputDecoration(
-                  labelText: 'Password Baru',
+                TextField(
+                  controller: passwordBaruController,
+                  decoration: const InputDecoration(
+                    labelText: 'Password Baru',
+                  ),
                 ),
-              ),
-              ElevatedButton(onPressed: () {}, child: const Text('Simpan'))
-            ],
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Simpan'),
+                ),
+                SizedBox(
+                  height: 400,
+                ),
+                Container(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Image.asset(
+                              'assets/icons/ferdy.png',
+                              width: 100,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'About This App',
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text('Aplikasi ini dibuat oleh:'),
+                                Text('Nama: Ferdy Febriyanto'),
+                                Text('NIM: 1941720007'),
+                                Text('Tanggal: 30 September 2022')
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -83,7 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: passwordHidden,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: "Masukkan password anda",
+                  labelText: "Password",
+                  hintText: 'Masukkan password anda',
                   prefixIcon: const Icon(Icons.lock),
                   suffixIcon: IconButton(
                     onPressed: () {
