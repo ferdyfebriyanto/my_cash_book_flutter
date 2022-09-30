@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   labelText: 'Username',
-                  hintText: 'Enter your username',
+                  hintText: 'Masukkan username anda',
                   prefixIcon: const Icon(Icons.person),
                 ),
               ),
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: passwordHidden,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: "Masukkan PIN Anda",
+                  labelText: "Masukkan password anda",
                   prefixIcon: const Icon(Icons.lock),
                   suffixIcon: IconButton(
                     onPressed: () {

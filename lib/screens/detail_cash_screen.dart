@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cash_book_flutter/db/database_instance.dart';
 import 'package:my_cash_book_flutter/models/transaksi_model.dart';
+import 'package:my_cash_book_flutter/screens/create_screen.dart';
 import 'package:my_cash_book_flutter/screens/update_screen.dart';
 
 class DetailCashFlow extends StatefulWidget {
@@ -58,6 +59,16 @@ class _DetailCashFlowState extends State<DetailCashFlow> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Detail Cash Flow"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreateScreen()));
+              },
+              icon: const Icon(Icons.add))
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: _refresh,
@@ -68,36 +79,41 @@ class _DetailCashFlowState extends State<DetailCashFlow> {
               height: 20,
             ),
             FutureBuilder(
-                future: databaseInstance!.totalPemasukan(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("-");
+              future: databaseInstance!.totalPemasukan(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("-");
+                } else {
+                  if (snapshot.hasData) {
+                    return Text(
+                        "Total pemasukan : Rp. ${snapshot.data.toString()}");
                   } else {
-                    if (snapshot.hasData) {
-                      return Text(
-                          "Total pemasukan : Rp. ${snapshot.data.toString()}");
-                    } else {
-                      return Text("");
-                    }
+                    return Text("Total pemasukan: Rp. 0");
                   }
-                }),
+                }
+              },
+            ),
             SizedBox(
               height: 20,
             ),
             FutureBuilder(
-                future: databaseInstance!.totalPengeluaran(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("-");
+              future: databaseInstance!.totalPengeluaran(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("-");
+                } else {
+                  if (snapshot.hasData) {
+                    return Text(
+                        "Total pengeluaran : Rp. ${snapshot.data.toString()}");
                   } else {
-                    if (snapshot.hasData) {
-                      return Text(
-                          "Total pengeluaran : Rp. ${snapshot.data.toString()}");
-                    } else {
-                      return Text("");
-                    }
+                    return Text("Total pengeluaran: Rp. 0");
                   }
-                }),
+                }
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
             FutureBuilder<List<TransaksiModel>>(
                 future: databaseInstance!.getAll(),
                 builder: (context, snapshot) {
@@ -111,50 +127,58 @@ class _DetailCashFlowState extends State<DetailCashFlow> {
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
                               return ListTile(
-                                  title: Text(snapshot.data![index].name!),
-                                  subtitle: Text(
-                                      snapshot.data![index].total!.toString()),
-                                  leading: snapshot.data![index].type == 1
-                                      ? Icon(
-                                          Icons.download,
-                                          color: Colors.green,
-                                        )
-                                      : Icon(
-                                          Icons.upload,
-                                          color: Colors.red,
-                                        ),
-                                  trailing: Wrap(
-                                    children: [
-                                      IconButton(
-                                          onPressed: () {
-                                            Navigator.of(context)
-                                                .push(MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        UpdateScreen(
-                                                          transaksiModel:
-                                                              snapshot
-                                                                  .data![index],
-                                                        )))
-                                                .then((value) {
-                                              setState(() {});
-                                            });
-                                          },
-                                          icon: Icon(
-                                            Icons.edit,
-                                            color: Colors.grey,
-                                          )),
-                                      SizedBox(
-                                        width: 20,
+                                title: Text(snapshot.data![index].name!),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      snapshot.data![index].total!.toString(),
+                                      style: TextStyle(
+                                        color: Color(0xFF0084FF),
                                       ),
-                                      IconButton(
-                                          onPressed: () {
-                                            showAlertDialog(context,
-                                                snapshot.data![index].id!);
-                                          },
-                                          icon: Icon(Icons.delete,
-                                              color: Colors.red))
-                                    ],
-                                  ));
+                                    ),
+                                    Text(snapshot.data![index].updatedAt!
+                                        .toString()),
+                                  ],
+                                ),
+                                leading: snapshot.data![index].type == 1
+                                    ? Icon(
+                                        Icons.download,
+                                        color: Colors.green,
+                                      )
+                                    : Icon(
+                                        Icons.upload,
+                                        color: Colors.red,
+                                      ),
+                                trailing: Wrap(
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      UpdateScreen(
+                                                        transaksiModel: snapshot
+                                                            .data![index],
+                                                      )))
+                                              .then((value) {
+                                            setState(() {});
+                                          });
+                                        },
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.grey,
+                                        )),
+                                    IconButton(
+                                        onPressed: () {
+                                          showAlertDialog(context,
+                                              snapshot.data![index].id!);
+                                        },
+                                        icon: Icon(Icons.delete,
+                                            color: Colors.red))
+                                  ],
+                                ),
+                              );
                             }),
                       );
                     } else {

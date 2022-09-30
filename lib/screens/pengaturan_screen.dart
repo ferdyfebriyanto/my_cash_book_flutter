@@ -11,8 +11,8 @@ class Pengaturan extends StatefulWidget {
 
 class _PengaturanState extends State<Pengaturan> {
   DatabaseInstance databaseInstance = DatabaseInstance();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordLamaController = TextEditingController();
+  TextEditingController passwordBaruController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ class _PengaturanState extends State<Pengaturan> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 child: const Text(
@@ -31,6 +32,19 @@ class _PengaturanState extends State<Pengaturan> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
+              TextField(
+                controller: passwordLamaController,
+                decoration: const InputDecoration(
+                  labelText: 'Password Lama',
+                ),
+              ),
+              TextField(
+                controller: passwordBaruController,
+                decoration: const InputDecoration(
+                  labelText: 'Password Baru',
+                ),
+              ),
+              ElevatedButton(onPressed: () {}, child: const Text('Simpan'))
             ],
           ),
         ),

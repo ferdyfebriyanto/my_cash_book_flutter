@@ -54,7 +54,7 @@ class _BerandaState extends State<Beranda> {
                       return Text(
                           "Total pemasukan : Rp. ${snapshot.data.toString()}");
                     } else {
-                      return Text("");
+                      return Text("Total pemasukan : Rp. 0");
                     }
                   }
                 },
@@ -72,7 +72,7 @@ class _BerandaState extends State<Beranda> {
                       return Text(
                           "Total pengeluaran : Rp. ${snapshot.data.toString()}");
                     } else {
-                      return Text("");
+                      return Text("Total pengeluaran : Rp. 0");
                     }
                   }
                 },
