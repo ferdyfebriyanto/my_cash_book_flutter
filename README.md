@@ -1,16 +1,22 @@
-# my_cash_book_flutter
+# My Cash Book Flutter
 
-A new Flutter project.
+## Biodata Diri
 
-## Getting Started
+| Nama | NIM | Kelas |
+| :--- | :--- | :--- |
+| Ferdy Febriyanto | 1941720007 | TI-4A |
 
-This project is a starting point for a Flutter application.
+## Deskripsi Aplikasi
 
-A few resources to get you started if this is your first Flutter project:
+Aplikasi ini merupakan aplikasi yang digunakan untuk mencatat transaksi keuangan. Aplikasi ini memiliki fitur untuk menambahkan transaksi, mengedit transaksi, dan menghapus transaksi.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![](./images/01.png)
+![](./images/02.png)
+![](./images/03.png)
+![](./images/04.png)
+![](./images/05.png)
+![](./images/05-1.png)
+![](./images/05-2.png)
+![](./images/06.png)
