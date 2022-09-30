@@ -40,7 +40,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Nama"),
+            Text("Keterangan"),
             TextField(
               controller: nameController,
             ),
@@ -73,7 +73,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
             SizedBox(
               height: 20,
             ),
-            Text("Total"),
+            Text("Nominal"),
             TextField(
               controller: totalController,
             ),

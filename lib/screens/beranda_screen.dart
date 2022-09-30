@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_cash_book_flutter/charts/line_chart.dart';
 import 'package:my_cash_book_flutter/db/database_instance.dart';
 import 'package:my_cash_book_flutter/screens/create_screen.dart';
+import 'package:my_cash_book_flutter/screens/detail_cash_screen.dart';
+import 'package:my_cash_book_flutter/screens/pengaturan_screen.dart';
 
 class Beranda extends StatefulWidget {
   const Beranda({super.key});
@@ -39,12 +41,9 @@ class _BerandaState extends State<Beranda> {
         onRefresh: _refresh,
         child: SafeArea(
             child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
-              ),
               FutureBuilder(
                 future: databaseInstance!.totalPemasukan(),
                 builder: (context, snapshot) {
@@ -83,62 +82,97 @@ class _BerandaState extends State<Beranda> {
               ),
               LineChartSample7(),
               SizedBox(
-                height: 30,
+                height: 10,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        // Tombol meuju ke halaman create pemasukan
-                        MaterialButton(
-                          minWidth: 100,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: GridView.count(
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    primary: false,
+                    crossAxisCount: 2,
+                    children: <Widget>[
+                      Card(
+                        child: MaterialButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => CreateScreen()));
                           },
-                          child: Expanded(
-                            child:
-                                Image.asset('assets/icons/pemasukan-icon.jpg'),
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset(
+                                'assets/icons/cash-in.jpg',
+                                height: 128,
+                              ),
+                              Text('Tambah Pemasukan'),
+                            ],
                           ),
                         ),
-                        // Tombol meuju ke halaman create pengeluaran
-                        MaterialButton(
-                          minWidth: 100,
+                      ),
+                      Card(
+                        child: MaterialButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => CreateScreen()));
                           },
-                          child: Expanded(
-                            child: Image.asset(
-                                'assets/icons/pengeluaran-icon.jpg'),
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset(
+                                'assets/icons/cash-out.jpg',
+                                height: 128,
+                              ),
+                              Text('Tambah Pengeluaran'),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child:
-                              Image.asset('assets/icons/detail-cash-icon.jpg'),
+                      ),
+                      Card(
+                        child: MaterialButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailCashFlow()));
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset(
+                                'assets/icons/cash-detail.jpg',
+                                height: 128,
+                              ),
+                              Text('Detail Cash Flow'),
+                            ],
+                          ),
                         ),
-                        Expanded(
-                          child: Image.asset('assets/icons/setting-icon.jpg'),
+                      ),
+                      Card(
+                        child: MaterialButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Pengaturan()));
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset(
+                                'assets/icons/setting.jpg',
+                                height: 128,
+                              ),
+                              Text('Pengaturan'),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         )),

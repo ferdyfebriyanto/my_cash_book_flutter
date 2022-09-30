@@ -33,7 +33,7 @@ class _CreateScreenState extends State<CreateScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Nama"),
+            Text("Keterangan"),
             TextField(
               controller: nameController,
             ),
