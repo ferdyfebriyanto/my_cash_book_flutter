@@ -24,7 +24,7 @@ class DatabaseInstance {
 
   // Atribut di Model User
   final String tabel_user = 'user';
-  final String id_user = 'id';
+  final String id_user = 'id_user';
   final String username = 'username';
   final String password = 'password';
   final String created_at = 'created_at';
@@ -87,23 +87,23 @@ class DatabaseInstance {
     return query;
   }
 
-  // Future<int> insertUser(Map<String, dynamic> row) async {
-  //   final query = await _database!.insert(tabel_user, row);
-  //   return query;
-  // }
+  Future<int> insertUser(Map<String, dynamic> row) async {
+    final query = await _database!.insert(tabel_user, row);
+    return query;
+  }
 
-  // _insertUser() async {
-  //   await insertUser({
-  //     'username': 'admin',
-  //     'password': '123456',
-  //     'created_at': DateTime.now().toString(),
-  //     'updated_at': DateTime.now().toString()
-  //   });
-  // }
+  _insertUser() async {
+    await insertUser({
+      'username': 'admin',
+      'password': '123456',
+      'created_at': DateTime.now().toString(),
+      'updated_at': DateTime.now().toString()
+    });
+  }
 
-  // Future<int> updateUser(int idUser, Map<String, dynamic> row) async {
-  //   final query = await _database!
-  //       .update(tabel_user, row, where: '$id_user = ?', whereArgs: [idUser]);
-  //   return query;
-  // }
+  Future<int> updateUser(int idUser, Map<String, dynamic> row) async {
+    final query = await _database!
+        .update(tabel_user, row, where: '$id_user = ?', whereArgs: [idUser]);
+    return query;
+  }
 }
