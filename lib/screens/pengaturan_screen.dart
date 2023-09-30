@@ -60,7 +60,7 @@ class _PengaturanState extends State<Pengaturan> {
                         children: [
                           Container(
                             child: Image.asset(
-                              'assets/icons/ferdy.png',
+                              'assets/icons/ferdy.jpg',
                               width: 100,
                             ),
                           ),
@@ -80,7 +80,7 @@ class _PengaturanState extends State<Pengaturan> {
                                 Text('Aplikasi ini dibuat oleh:'),
                                 Text('Nama: Ferdy Febriyanto'),
                                 Text('NIM: 1941720007'),
-                                Text('Tanggal: 30 September 2022')
+                                Text('Tanggal: 25 September 2023')
                               ],
                             ),
                           ),

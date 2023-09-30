@@ -105,7 +105,7 @@ class _BerandaState extends State<Beranda> {
                             children: <Widget>[
                               Image.asset(
                                 'assets/icons/cash-in.jpg',
-                                height: 128,
+                                height: 120,
                               ),
                               Text('Tambah Pemasukan'),
                             ],
@@ -124,7 +124,7 @@ class _BerandaState extends State<Beranda> {
                             children: <Widget>[
                               Image.asset(
                                 'assets/icons/cash-out.jpg',
-                                height: 128,
+                                height: 120,
                               ),
                               Text('Tambah Pengeluaran'),
                             ],
